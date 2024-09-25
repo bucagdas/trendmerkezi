@@ -37,7 +37,7 @@ def get_trends(url):
 
 def select_random_image(images_path):
     logging.info('Rastgele resim seçiliyor...')
-    images = [file for file in os.listdir(images_path) if file.endswith(('png', 'jpg', 'jpeg'))]
+    images = [file for file in os.listdir(images_path) if file.endswith(('webp', 'png', 'jpg', 'jpeg'))]
     selected_image = os.path.join(images_path, random.choice(images))
     logging.info('Resim seçme işlemi tamamlandı.')
     return selected_image
