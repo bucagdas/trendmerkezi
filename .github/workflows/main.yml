@@ -8,16 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
       - name: Install Dependencies
         run: |
-          pip install feedparser tweepy
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run Script
         run: python trendmerkezi.py
@@ -28,15 +29,14 @@ jobs:
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
 
-      - name: Commit Files
-        run: |
+      # Commit and push changes
+      - name: Commit and push changes
+        run: |-
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
-
-      - name: Push Changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+          git commit -m "Update Data ${timestamp}" || exit 0
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
