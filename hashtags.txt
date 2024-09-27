@@ -1,10 +1,9 @@
 #gündem 📰
-#trend 🔥
-#trendmerkezi 📊
+#internet 🌐
 #haberler 🗞
 #güncel 🌍
 #sosyalmedya 📱
-#internet 🌐
+#trendmerkezi 📊
 #popüler 🏆
 #sondakika ⚡️
 #dijitaldünya 💻
@@ -15,6 +14,7 @@
 #ekonomi 📊
 #piyasa 📉
 #spor ⚽️
+#trend 🔥
 #çevre 🌿
 #viral 🌍
 #fenomen 📱
