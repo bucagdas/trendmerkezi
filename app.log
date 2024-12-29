@@ -390,3 +390,5 @@
 2024-12-29 02:00:24,717 - INFO - Tweet başarıyla gönderildi.
 2024-12-29 08:00:32,269 - INFO - Tweet başarıyla gönderildi.
 2024-12-29 14:00:22,401 - INFO - Tweet başarıyla gönderildi.
+2024-12-29 20:00:24,974 - ERROR - Tweet gönderme işlemi sırasında hata oluştu: 403 Forbidden
+You are not permitted to perform this action.
