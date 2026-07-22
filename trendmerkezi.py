@@ -200,6 +200,13 @@ def tweet(text, image_path):
         logging.info(f"Tweet gönderildi. Medya: {image_path if media_ids else 'YOK (yalnız metin)'}")
     except Exception as e:
         logging.error(f"Tweet gönderilemedi (v2 create_tweet): {_twitter_error(e)}")
+        # TANI: okuma (get_me) çalışıyor mu? Yazma mı yoksa kimlik/anahtar mı sorunlu, ayırt et.
+        try:
+            me = client.get_me()
+            u = getattr(me, 'data', None)
+            logging.error(f"TANI: get_me BAŞARILI -> auth geçerli, sorun YAZMA izni/kotası. Hesap: @{getattr(u, 'username', '?')}")
+        except Exception as e2:
+            logging.error(f"TANI: get_me de BAŞARISIZ -> kimlik/anahtar çifti hatalı (kopyalama/uyuşmazlık): {_twitter_error(e2)}")
 
 
 def main():
