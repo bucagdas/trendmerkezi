@@ -2,6 +2,13 @@ name: Tweet Workflow
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'DRY_RUN: true = tweet atma, sadece logda göster'
+        required: false
+        default: 'true'
+  # NOT: zamanlama (schedule) canlıya alırken eklenecek — şimdilik kapalı,
+  # ve manuel çalıştırmada DRY_RUN varsayılan açık, yani yanlışlıkla tweet atılmaz.
 
 jobs:
   tweet:
@@ -13,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
@@ -23,6 +30,7 @@ jobs:
       - name: Run Script
         run: python trendmerkezi.py
         env:
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
