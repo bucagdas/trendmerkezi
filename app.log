@@ -1149,3 +1149,5 @@ You are not permitted to perform this action.
 2025-07-06 14:00:20,653 - WARNING - Trend verisi çekilemedi, işlem iptal ediliyor.
 2025-07-06 20:00:19,752 - WARNING - Trend verisi çekilemedi, işlem iptal ediliyor.
 2025-07-07 02:00:20,554 - WARNING - Trend verisi çekilemedi, işlem iptal ediliyor.
+2026-07-22 14:41:42,217 - INFO - 5 trend seçildi: ['hac kura sonuçları', 'mustafa balbay', 'mahmut tanal', 'motorine zam geldi', 'mesud pezeşkiyan']
+2026-07-22 14:41:42,218 - INFO - DRY_RUN aktif — tweet atılmadı.
