@@ -201,6 +201,18 @@ def tweet(text, image_path):
         logging.info("DRY_RUN aktif — tweet atılmadı.")
         return
     _cred_shape()
+    # Ham OAuth1 tanısı: X'in verdiği gerçek status + başlık + gövdeyi görelim.
+    try:
+        from requests_oauthlib import OAuth1Session
+        oauth = OAuth1Session(consumer_key, consumer_secret, access_token, access_token_secret)
+        r = oauth.get("https://api.twitter.com/2/users/me")
+        logging.info(
+            "TANI-HAM get_me: status=%s x-access-level=%s x-rate-limit-remaining=%s body=%s"
+            % (r.status_code, r.headers.get('x-access-level'),
+               r.headers.get('x-rate-limit-remaining'), (r.text or '')[:300])
+        )
+    except Exception as e:
+        logging.error(f"TANI-HAM istisna: {e}")
     try:
         api, client = get_twitter_clients()
     except Exception as e:
