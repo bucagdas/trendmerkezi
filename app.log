@@ -1151,3 +1151,6 @@ You are not permitted to perform this action.
 2025-07-07 02:00:20,554 - WARNING - Trend verisi çekilemedi, işlem iptal ediliyor.
 2026-07-22 14:41:42,217 - INFO - 5 trend seçildi: ['hac kura sonuçları', 'mustafa balbay', 'mahmut tanal', 'motorine zam geldi', 'mesud pezeşkiyan']
 2026-07-22 14:41:42,218 - INFO - DRY_RUN aktif — tweet atılmadı.
+2026-07-22 15:01:07,003 - INFO - 5 trend seçildi: ['hac kura sonuçları', 'mustafa balbay', 'mahmut tanal', 'motorine zam geldi', 'mesud pezeşkiyan']
+2026-07-22 15:01:07,662 - ERROR - Tweet gönderme işlemi sırasında hata: 403 Forbidden
+When authenticating requests to the X API v2 endpoints, you must use keys and tokens from a developer App that is attached to a Project. You can create a project via the developer portal.
