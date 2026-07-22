@@ -3,9 +3,13 @@ import sys
 import time
 import random
 import logging
+import unicodedata
 
 import tweepy
 from trendspy import Trends
+
+# X/Twitter karakter limiti (Premium değilse 280). Güvenlik payı için biraz düşük.
+TWEET_LIMIT = 278
 
 # Loglama: hem app.log'a hem stdout'a (GitHub Actions loglarında görünsün)
 logging.basicConfig(
@@ -112,13 +116,46 @@ def get_trends(geo='TR', hours=24, count=5):
         return []
 
 
-def build_tweet_text(trends, comments_file_path, hashtags_file_path):
+def weighted_len(s):
+    """X'in ağırlıklı karakter sayımına yaklaşım: emoji/semboller 2, diğerleri 1."""
+    total = 0
+    for ch in s:
+        if ord(ch) >= 0x1F000 or unicodedata.category(ch) in ('So', 'Sk'):
+            total += 2
+        else:
+            total += 1
+    return total
+
+
+def build_tweet_text(trends, comments_file_path, hashtags_file_path, limit=TWEET_LIMIT):
+    """Tweet metnini kurar. TRENDLER HER ZAMAN KORUNUR; limit aşılırsa önce
+    hashtag sayısı azaltılır (3->0), yetmezse daha kısa bir yorum seçilir."""
+    trends_block = "Güncel trendler şöyle:\n" + "\n".join(
+        f"{i + 1}- {t}" for i, t in enumerate(trends))
+
+    comments = load_hashtags(comments_file_path)   # satırları yükler
     hashtags_list = load_hashtags(hashtags_file_path)
-    selected = random.sample(hashtags_list, min(3, len(hashtags_list))) if hashtags_list else []
-    hashtags = " ".join(selected)
-    trends_string = "\n".join(f"{i + 1}- {t}" for i, t in enumerate(trends))
-    comment = select_random_comment(comments_file_path)
-    return f"{comment}\nGüncel trendler şöyle:\n{trends_string}\n{hashtags}".strip()
+    tags3 = random.sample(hashtags_list, min(3, len(hashtags_list))) if hashtags_list else []
+    comment = random.choice(comments) if comments else ""
+
+    def compose(cmt, ntags):
+        parts = ([cmt] if cmt else []) + [trends_block]
+        if ntags:
+            parts.append(" ".join(tags3[:ntags]))
+        return "\n".join(parts)
+
+    # 1) Seçilen yorumla, hashtag'i 3'ten 0'a azaltarak dene
+    for ntags in (3, 2, 1, 0):
+        text = compose(comment, ntags)
+        if weighted_len(text) <= limit:
+            return text
+    # 2) Hâlâ uzunsa: hashtag'siz, en kısa yorumdan başlayarak dene
+    for cmt in sorted(comments, key=weighted_len):
+        text = compose(cmt, 0)
+        if weighted_len(text) <= limit:
+            return text
+    # 3) Son çare: sadece trendler
+    return trends_block
 
 
 def tweet(text, image_path):
