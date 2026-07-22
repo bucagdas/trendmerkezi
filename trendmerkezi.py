@@ -173,6 +173,26 @@ def _twitter_error(e):
     return " | ".join(parts)
 
 
+def _cred_shape():
+    """Anahtar DEĞERLERİNİ sızdırmadan biçim tanısı: uzunluk, boşluk, maskeli önek.
+    Tipik uzunluklar: API Key=25, API Secret=50, Access Token=50 (userID-...),
+    Access Secret=45, Bearer=~110. Sapma/boşluk/yer değiştirme buradan görülür."""
+    def shape(name, v):
+        if not v:
+            return f"{name}=YOK/boş"
+        stripped = v.strip()
+        ws = " [BOŞLUK/SATIRSONU VAR!]" if v != stripped else ""
+        mask = f"{v[:3]}…{v[-3:]}" if len(v) > 8 else "***"
+        extra = ""
+        if name == 'ACCESS_TOKEN':
+            extra = " dash=VAR(ok)" if '-' in v else " dash=YOK(!şüpheli)"
+        return f"{name} len={len(v)} {mask}{extra}{ws}"
+    for n, v in (('CONSUMER_KEY', consumer_key), ('CONSUMER_SECRET', consumer_secret),
+                 ('ACCESS_TOKEN', access_token), ('ACCESS_TOKEN_SECRET', access_token_secret),
+                 ('BEARER_TOKEN', bearer_token)):
+        logging.info(f"TANI-ŞEKİL: {shape(n, v)}")
+
+
 def tweet(text, image_path):
     if DRY_RUN:
         print("=== DRY_RUN: gönderilecek tweet (canlıya ATILMADI) ===")
@@ -180,6 +200,7 @@ def tweet(text, image_path):
         print(f"[medya: {image_path}]")
         logging.info("DRY_RUN aktif — tweet atılmadı.")
         return
+    _cred_shape()
     try:
         api, client = get_twitter_clients()
     except Exception as e:
