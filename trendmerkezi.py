@@ -91,7 +91,9 @@ def tweet(content, image_path, trends, comments_file_path, hashtags_file_path):
         logging.error(f'Tweet gönderme işlemi sırasında hata oluştu: {e}')
 
 def main():
-    rss_url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=TR"
+    # Google eski "trendingsearches/daily/rss" endpoint'ini kaldırdı (404).
+    # Yeni "Trending Now" RSS'i geo=<ISO ülke kodu> ile çalışır.
+    rss_url = "https://trends.google.com/trending/rss?geo=TR"
     images_path = "./images"
     comments_file_path = "./comments.txt"
     hashtags_file_path = "./hashtags.txt"
