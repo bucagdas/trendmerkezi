@@ -130,8 +130,7 @@ def weighted_len(s):
 def build_tweet_text(trends, comments_file_path, hashtags_file_path, limit=TWEET_LIMIT):
     """Tweet metnini kurar. TRENDLER HER ZAMAN KORUNUR; limit aşılırsa önce
     hashtag sayısı azaltılır (3->0), yetmezse daha kısa bir yorum seçilir."""
-    trends_block = "Güncel trendler şöyle:\n" + "\n".join(
-        f"{i + 1}- {t}" for i, t in enumerate(trends))
+    trends_block = "\n".join(f"{i + 1}- {t}" for i, t in enumerate(trends))
 
     comments = load_hashtags(comments_file_path)   # satırları yükler
     hashtags_list = load_hashtags(hashtags_file_path)
@@ -158,6 +157,22 @@ def build_tweet_text(trends, comments_file_path, hashtags_file_path, limit=TWEET
     return trends_block
 
 
+def _twitter_error(e):
+    """Tweepy hatasından tanılama için ayrıntı çıkarır (kod, mesaj, gövde)."""
+    parts = [str(e)]
+    for attr in ('api_codes', 'api_messages'):
+        v = getattr(e, attr, None)
+        if v:
+            parts.append(f"{attr}={v}")
+    resp = getattr(e, 'response', None)
+    if resp is not None:
+        try:
+            parts.append(f"body={resp.text[:300]}")
+        except Exception:
+            pass
+    return " | ".join(parts)
+
+
 def tweet(text, image_path):
     if DRY_RUN:
         print("=== DRY_RUN: gönderilecek tweet (canlıya ATILMADI) ===")
@@ -167,11 +182,24 @@ def tweet(text, image_path):
         return
     try:
         api, client = get_twitter_clients()
-        media_id = api.media_upload(filename=image_path).media_id_string
-        client.create_tweet(text=text, media_ids=[media_id])
-        logging.info(f"Tweet başarıyla gönderildi. Medya: {image_path}")
     except Exception as e:
-        logging.error(f"Tweet gönderme işlemi sırasında hata: {e}")
+        logging.error(f"Twitter istemcisi kurulamadı: {e}")
+        return
+
+    # Medya (v1.1 media_upload) — başarısız olursa (ör. API katmanı v1.1'i
+    # desteklemiyorsa) metin-olarak devam et, böylece gönderi büsbütün düşmesin.
+    media_ids = None
+    if image_path:
+        try:
+            media_ids = [api.media_upload(filename=image_path).media_id_string]
+        except Exception as e:
+            logging.error(f"Medya yüklenemedi (v1.1 media_upload): {_twitter_error(e)}")
+
+    try:
+        client.create_tweet(text=text, media_ids=media_ids)
+        logging.info(f"Tweet gönderildi. Medya: {image_path if media_ids else 'YOK (yalnız metin)'}")
+    except Exception as e:
+        logging.error(f"Tweet gönderilemedi (v2 create_tweet): {_twitter_error(e)}")
 
 
 def main():
