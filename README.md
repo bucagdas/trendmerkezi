@@ -58,8 +58,8 @@ Gereksinimler `requirements.txt` içinde:
    - `ACCESS_TOKEN_SECRET`
    - `BEARER_TOKEN`
 
-   > Not: Anahtarların, v2 uç noktalarına yazma yapabilmesi için **bir Project'e bağlı**
-   > (aktif planlı) bir X uygulamasından, **Read + Write** izniyle üretilmiş olması gerekir.
+   > Anahtarların nereden geldiği ve nasıl yenileneceği için aşağıdaki
+   > **[Altyapı ve Kimlik Doğrulama](#altyapı-ve-kimlik-doğrulama-x-api)** bölümüne bakın.
 4. İçerik dosyalarını hazırlayın: `images/` klasörüne görsel/video, `comments.txt` ve
    `hashtags.txt` dosyalarına her satıra bir öğe.
 5. Çalıştırın: `python trendmerkezi.py`
@@ -68,6 +68,44 @@ Gereksinimler `requirements.txt` içinde:
 
 `DRY_RUN=1 python trendmerkezi.py` — trendleri çeker, atılacak tweet'i **ekrana yazar**
 ama **canlıya göndermez**. (`DRY_RUN` için kabul edilen değerler: `1`, `true`, `yes`.)
+
+## Altyapı ve Kimlik Doğrulama (X API)
+
+> Bu bölüm **özel/private** repo içindir; kurulumun nasıl çalıştığını belgeler.
+> **Anahtar değerleri asla burada tutulmaz** — yalnızca yapı ve prosedür.
+
+**Neden özel bir kurulum?** X, eski **developer.x.com Free tier**'ı kaldırdı
+("no longer includes general access to API endpoints"). trendmerkezi'nin kendi
+eski developer hesabı (proje: *trend*, app: *GTTrends* / `28275448`) bir Project'te
+görünmesine rağmen v2 çağrılarında `client-not-enrolled` / 0 kota veriyor — yani ölü.
+Token yenilemek veya app'i Project'ten çıkarıp eklemek bunu **çözmez**; sorun app
+değil, hesabın **planıdır**.
+
+**Çalışan kurulum:** Bot, **dovizmerkezi'nin `console.x.com` (Pay Per Use)** hesabı
+(`account 1746913296043692032`) altında oluşturulmuş ayrı bir uygulama üzerinden çalışır:
+
+- **App:** `TrendMerkezi` (app id `33229852`) — dovizmerkezi'nin kendi app'ine dokunulmadı.
+- **İzin/Tip:** Read + Write, "Web App / Automated App or Bot".
+- **Kime atıyor:** Tweet, **@trendmerkezi**'nin (`user id 751989891941142528`) OAuth
+  1.0a kullanıcı token'ıyla atılır — yani gönderi @trendmerkezi'ye düşer.
+- **Kota/masraf:** Kullanım **dovizmerkezi'nin Pay Per Use kredisinden** düşer
+  (iki bot tek cüzdan; gözlenen maliyet düşük, tweet başına birkaç sent).
+
+**Token'ı yenileme (3-bacaklı OAuth / PIN):** GitHub secret'larındaki `ACCESS_TOKEN` /
+`ACCESS_TOKEN_SECRET` yalnızca @trendmerkezi'ye aittir; iptal edilmedikçe süresizdir.
+Yeniden üretmek gerekirse (app'in Consumer Key/Secret'iyle):
+
+```python
+import tweepy
+h = tweepy.OAuth1UserHandler(CONSUMER_KEY, CONSUMER_SECRET, callback="oob")
+print(h.get_authorization_url())          # linki @trendmerkezi olarak giriş yapıp aç
+at, ats = h.get_access_token("PIN")       # ekranda çıkan PIN'i gir
+# at / ats -> ACCESS_TOKEN / ACCESS_TOKEN_SECRET olarak GitHub secret'a yaz
+```
+
+> Yetkilendirme linkini açarken **mutlaka @trendmerkezi olarak giriş yapmış olun**
+> (dovizmerkezi ile onaylarsanız token yanlış hesaba çıkar). Posting OAuth 1.0a
+> kullanıcı bağlamıyla yapılır; `BEARER_TOKEN` create_tweet için gerekli değildir.
 
 ## Dosya yapısı
 
