@@ -1,47 +1,90 @@
-# TrendMerkezi: Twitter'da Güncel Trendleri Paylaş
+# TrendMerkezi — X'te Güncel Trend Paylaşımı
 
-TrendMerkezi, Twitter üzerinde güncel trendleri ve ilgi çekici içerikleri otomatik olarak paylaşan bir Python scriptidir. Bu script, belirlenen RSS beslemelerinden trend konuları çeker, rastgele yorumlar ve görseller seçerek bu trendleri özelleştirilmiş tweetlerle paylaşır. Kullanıcılar, bu script sayesinde Twitter'da dikkat çekici ve etkileşim yaratmayı amaçlayan içerikler oluşturabilirler.
+TrendMerkezi, Türkiye'deki güncel arama trendlerini otomatik olarak toplayıp
+**[@trendmerkezi](https://x.com/trendmerkezi)** hesabında; samimi bir yorum ve
+bir görsel/video ile birlikte paylaşan bir Python botudur. Tamamen otomatiktir:
+günde 4 kez, sosyal medyanın yoğun olduğu saatlerde kendiliğinden gönderi atar.
 
-## Özellikler
+## Nasıl çalışır?
 
-- **Güncel Trendler:** Google Trends üzerinden RSS feed aracılığıyla Türkiye'deki güncel trend konularını çeker.
-- **Rastgele Yorum Seçimi:** Önceden belirlenen bir dosyadan rastgele yorumlar seçer.
-- **Rastgele Görsel Seçimi:** Belirli bir klasördeki görseller arasından rastgele bir görsel seçer.
-- **Otomatik Tweet Atma:** Seçilen yorum, trendler ve görsel ile özelleştirilmiş tweetler oluşturur ve bunları Twitter'da paylaşır.
-- **Loglama:** Uygulamanın çalışma zamanındaki önemli adımları ve hataları bir log dosyasına kaydeder.
+Her çalıştığında script şu adımları izler:
+
+1. **Trendleri çeker** — Google'ın "Trending Now" verisinden (son 24 saat, `geo=TR`)
+   [`trendspy`](https://pypi.org/project/trendspy/) ile taze/yükselen trendleri alır;
+   biten, düşük hacimli veya aşırı uzun (haber-sorgusu) girdileri eler, yükseliş
+   yüzdesi + hacme göre sıralayıp ilk **5**'i seçer.
+2. **Yorum seçer** — `comments.txt` içinden rastgele, sıcak/esprili bir açılış cümlesi.
+3. **Hashtag ekler** — `hashtags.txt` içinden rastgele en fazla 3 etiket.
+4. **Görsel/video seçer** — `images/` klasöründen rastgele bir medya (`.webp`, `.png`,
+   `.jpg`, `.jpeg`, `.mp4`).
+5. **Metni güvenle kurar** — X'in ağırlıklı karakter sayımına göre 278 sınırını aşmamak
+   için: **trendler her zaman korunur**; gerekirse önce hashtag sayısı 3→0 azaltılır,
+   yetmezse daha kısa bir yorum seçilir.
+6. **Paylaşır** — medyayı `tweepy` ile yükler (v1.1) ve tweet'i v2 API üzerinden atar;
+   medya yüklenemezse gönderi düşmesin diye **yalnız-metin** olarak devam eder.
+7. **Loglar** — önemli adımları ve hataları hem `app.log`'a hem de çalışma çıktısına yazar.
+
+## Otomasyon (zamanlama)
+
+Bot, GitHub Actions üzerinde (`.github/workflows/main.yml`, `workflow_dispatch`)
+çalışır. GitHub'ın kendi `schedule`'ı gecikmeli tetiklediği için zamanlama **harici
+bir Cloudflare Worker cron**'u ile yapılır. Günde **4 gönderi**:
+
+| UTC | Türkiye (UTC+3) |
+| --- | --- |
+| 06:00 | 09:00 |
+| 10:00 | 13:00 |
+| 15:00 | 18:00 |
+| 19:00 | 22:00 |
+
+Cloudflare, workflow'u `dry_run: false` ile tetikler; manuel çalıştırmada varsayılan
+`dry_run: true`'dur, yani yanlışlıkla tweet atılmaz.
 
 ## Kurulum
 
-TrendMerkezi'nin çalışması için Python'un yüklü olması ve aşağıdaki Python kütüphanelerinin kurulmuş olması gerekmektedir:
+Gereksinimler `requirements.txt` içinde:
 
-- `feedparser`: RSS feedlerini işlemek için kullanılır.
-- `tweepy`: Twitter API ile etkileşim kurmak için kullanılır.
-- `os`, `random`, `logging`: Scriptin temel işlevselliği için gerekli standart Python modülleri.
+- [`trendspy`](https://pypi.org/project/trendspy/) — Google Trends "Trending Now" verisi
+- [`tweepy`](https://pypi.org/project/tweepy/) — X/Twitter API istemcisi
 
 ### Adımlar
 
-1. Bu repoyu klonlayın veya indirin.
-2. Gerekli kütüphaneleri yüklemek için `pip install -r requirements.txt` komutunu çalıştırın.
-3. Twitter API anahtarlarınızı edinin ve aşağıdaki ortam değişkenleri olarak sisteminize ekleyin:
+1. Repoyu klonlayın.
+2. `pip install -r requirements.txt`
+3. X API kimlik bilgilerinizi **ortam değişkeni** (veya GitHub Actions secret'ı) olarak verin:
    - `CONSUMER_KEY`
    - `CONSUMER_SECRET`
    - `ACCESS_TOKEN`
    - `ACCESS_TOKEN_SECRET`
    - `BEARER_TOKEN`
-4. `images` klasörünü ve `comments.txt` dosyasını hazırlayın. Görseller `images` klasöründe, yorumlar ise her satırda bir yorum olacak şekilde `comments.txt` dosyasında bulunmalıdır.
-5. Scripti çalıştırmak için terminal veya komut satırından `python trendmerkezi.py` komutunu kullanın.
 
-## Kullanım
+   > Not: Anahtarların, v2 uç noktalarına yazma yapabilmesi için **bir Project'e bağlı**
+   > (aktif planlı) bir X uygulamasından, **Read + Write** izniyle üretilmiş olması gerekir.
+4. İçerik dosyalarını hazırlayın: `images/` klasörüne görsel/video, `comments.txt` ve
+   `hashtags.txt` dosyalarına her satıra bir öğe.
+5. Çalıştırın: `python trendmerkezi.py`
 
-Script, her çalıştırıldığında aşağıdaki adımları otomatik olarak gerçekleştirir:
+### Yerel test (tweet atmadan)
 
-1. Güncel trendleri Google Trends RSS feed'inden çeker.
-2. `images` klasöründen rastgele bir görsel seçer.
-3. `comments.txt` dosyasından rastgele bir yorum seçer.
-4. Seçilen görsel, yorum ve trend bilgilerini içeren bir tweet oluşturur ve Twitter'da paylaşır.
+`DRY_RUN=1 python trendmerkezi.py` — trendleri çeker, atılacak tweet'i **ekrana yazar**
+ama **canlıya göndermez**. (`DRY_RUN` için kabul edilen değerler: `1`, `true`, `yes`.)
+
+## Dosya yapısı
+
+| Dosya | İşlev |
+| --- | --- |
+| `trendmerkezi.py` | Ana script |
+| `comments.txt` | Rastgele seçilen açılış yorumları (her satır bir yorum) |
+| `hashtags.txt` | Rastgele seçilen hashtag havuzu |
+| `images/` | Paylaşılacak görsel/video havuzu |
+| `requirements.txt` | Python bağımlılıkları |
+| `.github/workflows/main.yml` | GitHub Actions iş akışı |
+| `app.log` | Çalışma logları |
 
 ## Lisans
 
 Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
 
----
+## Yazar
+
+[bucagdas](https://github.com/bucagdas)
