@@ -173,26 +173,6 @@ def _twitter_error(e):
     return " | ".join(parts)
 
 
-def _cred_shape():
-    """Anahtar DEĞERLERİNİ sızdırmadan biçim tanısı: uzunluk, boşluk, maskeli önek.
-    Tipik uzunluklar: API Key=25, API Secret=50, Access Token=50 (userID-...),
-    Access Secret=45, Bearer=~110. Sapma/boşluk/yer değiştirme buradan görülür."""
-    def shape(name, v):
-        if not v:
-            return f"{name}=YOK/boş"
-        stripped = v.strip()
-        ws = " [BOŞLUK/SATIRSONU VAR!]" if v != stripped else ""
-        mask = f"{v[:3]}…{v[-3:]}" if len(v) > 8 else "***"
-        extra = ""
-        if name == 'ACCESS_TOKEN':
-            extra = " dash=VAR(ok)" if '-' in v else " dash=YOK(!şüpheli)"
-        return f"{name} len={len(v)} {mask}{extra}{ws}"
-    for n, v in (('CONSUMER_KEY', consumer_key), ('CONSUMER_SECRET', consumer_secret),
-                 ('ACCESS_TOKEN', access_token), ('ACCESS_TOKEN_SECRET', access_token_secret),
-                 ('BEARER_TOKEN', bearer_token)):
-        logging.info(f"TANI-ŞEKİL: {shape(n, v)}")
-
-
 def tweet(text, image_path):
     if DRY_RUN:
         print("=== DRY_RUN: gönderilecek tweet (canlıya ATILMADI) ===")
@@ -200,19 +180,6 @@ def tweet(text, image_path):
         print(f"[medya: {image_path}]")
         logging.info("DRY_RUN aktif — tweet atılmadı.")
         return
-    _cred_shape()
-    # Ham OAuth1 tanısı: X'in verdiği gerçek status + başlık + gövdeyi görelim.
-    try:
-        from requests_oauthlib import OAuth1Session
-        oauth = OAuth1Session(consumer_key, consumer_secret, access_token, access_token_secret)
-        r = oauth.get("https://api.twitter.com/2/users/me")
-        logging.info(
-            "TANI-HAM get_me: status=%s x-access-level=%s x-rate-limit-remaining=%s body=%s"
-            % (r.status_code, r.headers.get('x-access-level'),
-               r.headers.get('x-rate-limit-remaining'), (r.text or '')[:300])
-        )
-    except Exception as e:
-        logging.error(f"TANI-HAM istisna: {e}")
     try:
         api, client = get_twitter_clients()
     except Exception as e:
@@ -233,13 +200,6 @@ def tweet(text, image_path):
         logging.info(f"Tweet gönderildi. Medya: {image_path if media_ids else 'YOK (yalnız metin)'}")
     except Exception as e:
         logging.error(f"Tweet gönderilemedi (v2 create_tweet): {_twitter_error(e)}")
-        # TANI: okuma (get_me) çalışıyor mu? Yazma mı yoksa kimlik/anahtar mı sorunlu, ayırt et.
-        try:
-            me = client.get_me()
-            u = getattr(me, 'data', None)
-            logging.error(f"TANI: get_me BAŞARILI -> auth geçerli, sorun YAZMA izni/kotası. Hesap: @{getattr(u, 'username', '?')}")
-        except Exception as e2:
-            logging.error(f"TANI: get_me de BAŞARISIZ -> kimlik/anahtar çifti hatalı (kopyalama/uyuşmazlık): {_twitter_error(e2)}")
 
 
 def main():
