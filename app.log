@@ -1321,3 +1321,5 @@ When authenticating requests to the X API v2 endpoints, you must use keys and to
 2026-08-11 06:01:15,909 - INFO - Tweet gönderildi. Medya: ./images/trend5.webp
 2026-08-11 10:01:22,307 - INFO - 5 trend seçildi: ['emniyet genel müdürlüğü', 'alexander sörloth', 'rafael leão', 'deniz seki', 'a101 carrefour']
 2026-08-11 10:01:23,014 - INFO - Tweet gönderildi. Medya: ./images/trend9.webp
+2026-08-11 15:01:25,786 - INFO - 5 trend seçildi: ['sebahattin şirin nereli', 'deniz seki', 'palermo - juventus', 'motorine zam', 'hakan bayrakçı']
+2026-08-11 15:01:26,902 - INFO - Tweet gönderildi. Medya: ./images/trend3.webp
