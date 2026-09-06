@@ -1523,3 +1523,6 @@ When authenticating requests to the X API v2 endpoints, you must use keys and to
 2026-09-05 15:00:45,830 - INFO - Tweet gönderildi. Medya: ./images/trend2.webp
 2026-09-05 19:00:43,467 - INFO - 5 trend seçildi: ['fenerbahçe', 'serhat mustafa kılıç', 'voleybol final maçı ne zaman', 'erzurumspor - konyaspor', 'trossard']
 2026-09-05 19:00:44,250 - INFO - Tweet gönderildi. Medya: ./images/trend7.webp
+2026-09-06 06:00:42,103 - INFO - 5 trend seçildi: ['fenerbahçe - beşiktaş puan durumları', 'serhat mustafa kılıç', 'voleybol final maçı ne zaman', 'erzurumspor fk - konyaspor puan durumları', 'benzin motorin zam']
+2026-09-06 06:00:43,963 - ERROR - Tweet gönderilemedi (v2 create_tweet): 503 Service Unavailable
+Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Service Unavailable","status":503,"title":"Service Unavailable","type":"about:blank"}
