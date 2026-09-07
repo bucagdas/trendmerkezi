@@ -1532,3 +1532,5 @@ Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Ser
 2026-09-06 15:00:49,712 - INFO - Tweet gönderildi. Medya: ./images/trend10.webp
 2026-09-06 19:00:48,629 - INFO - 5 trend seçildi: ['trt 1 canlı', 'kasımpaşa - amed', 'trabzonspor - gençlerbirliği', 'çorum - eyüpspor', 'ts']
 2026-09-06 19:00:50,435 - INFO - Tweet gönderildi. Medya: ./images/trend1.mp4
+2026-09-07 06:00:50,810 - INFO - 5 trend seçildi: ['trabzonspor - gençlerbirliği puan durumları', 'kasımpaşa - amed', 'juventus - milan', 'batman petrol spor', 'kocaelispor - samsunspor']
+2026-09-07 06:00:51,957 - INFO - Tweet gönderildi. Medya: ./images/trend4.webp
