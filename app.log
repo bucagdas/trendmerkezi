@@ -1534,3 +1534,5 @@ Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Ser
 2026-09-06 19:00:50,435 - INFO - Tweet gönderildi. Medya: ./images/trend1.mp4
 2026-09-07 06:00:50,810 - INFO - 5 trend seçildi: ['trabzonspor - gençlerbirliği puan durumları', 'kasımpaşa - amed', 'juventus - milan', 'batman petrol spor', 'kocaelispor - samsunspor']
 2026-09-07 06:00:51,957 - INFO - Tweet gönderildi. Medya: ./images/trend4.webp
+2026-09-07 10:00:56,011 - INFO - 5 trend seçildi: ['derya cebecioğlu', 'trabzonspor - gençlerbirliği', 'kasımpaşa - amed', 'juventus - milan', 'ebrar karakurt neden milli takımda yok']
+2026-09-07 10:00:56,818 - INFO - Tweet gönderildi. Medya: ./images/trend4.webp
