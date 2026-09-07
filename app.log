@@ -1538,3 +1538,5 @@ Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Ser
 2026-09-07 10:00:56,818 - INFO - Tweet gönderildi. Medya: ./images/trend4.webp
 2026-09-07 15:00:51,834 - INFO - 5 trend seçildi: ['trabzonspor - gençlerbirliği puan durumları', 'derya cebecioğlu', 'nuri aslan', 'muhittin böcek', 'juventus - milan']
 2026-09-07 15:00:53,689 - INFO - Tweet gönderildi. Medya: ./images/trend6.webp
+2026-09-07 19:00:48,149 - INFO - 5 trend seçildi: ['göztepe - gaziantep fk', 'nuri aslan', 'muhittin böcek', 'rizespor - alanyaspor', 'ilkay gündoğan']
+2026-09-07 19:00:50,662 - INFO - Tweet gönderildi. Medya: ./images/trend3.mp4
