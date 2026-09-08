@@ -1547,3 +1547,6 @@ Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Ser
 2026-09-08 15:00:50,097 - INFO - 5 trend seçildi: ['2026 uefa şampiyonlar ligi', 'göztepe - gaziantep fk', 'üsküdar belediyesi seçim', 'uefa champions league 2026', '80 ler akımı']
 2026-09-08 15:00:51,081 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-08 19:00:52,514 - INFO - 5 trend seçildi: ['2026 uefa şampiyonlar ligi', 'real madrid - inter', 'club brugge - aston villa', 'tabii spor', 'üsküdar belediyesi seçim']
+2026-09-08 19:00:53,302 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
