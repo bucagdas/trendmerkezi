@@ -1542,3 +1542,5 @@ Service Unavailable | api_messages=['Service Unavailable'] | body={"detail":"Ser
 2026-09-07 19:00:50,662 - INFO - Tweet gönderildi. Medya: ./images/trend3.mp4
 2026-09-08 06:00:48,574 - INFO - 5 trend seçildi: ['2026 uefa şampiyonlar ligi', 'göztepe - gaziantep fk', 'rizespor - alanyaspor', 'nuri aslan', 'rodrigo becao']
 2026-09-08 06:00:49,476 - INFO - Tweet gönderildi. Medya: ./images/trend12.webp
+2026-09-08 10:00:50,253 - INFO - 5 trend seçildi: ['2026 uefa şampiyonlar ligi', 'göztepe - gaziantep fk', 'rizespor - alanyaspor', '80 ler akımı', 'uefa champions league 2026']
+2026-09-08 10:00:51,272 - INFO - Tweet gönderildi. Medya: ./images/trend11.webp
