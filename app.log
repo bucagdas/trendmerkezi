@@ -1556,3 +1556,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-09 10:00:51,443 - INFO - 5 trend seçildi: ['real madrid - inter', 'porto - manchester city', 'sunderland - hull city', 'haysiyet oyuncuları', 'tuzlu kahve 2. bölüm']
 2026-09-09 10:00:53,288 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-09 15:00:47,833 - INFO - 5 trend seçildi: ['real madrid - inter puan durumları', 'meclis üyesi', 'kredi', 'haysiyet oyuncuları', 'tuzlu kahve 2. bölüm']
+2026-09-09 15:00:48,492 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
