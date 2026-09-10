@@ -1562,3 +1562,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-09 19:00:49,526 - INFO - 5 trend seçildi: ['gs maçı hangi kanalda', 'real madrid - inter puan durumları', 'barselona - feyenoord', 'meclis üyesi', 'kredi']
 2026-09-09 19:00:50,034 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-10 06:00:58,253 - INFO - 5 trend seçildi: ['sporting lizbon - galatasaray puan durumları', 'iphone duo', 'barselona - feyenoord', 'liverpool - atletico madrid', 'psg - slovan bratislava']
+2026-09-10 06:00:59,966 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
