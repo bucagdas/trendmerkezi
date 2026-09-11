@@ -1574,3 +1574,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-11 06:00:26,249 - INFO - 5 trend seçildi: ['ismail kartal', 'fenerbahçe - as roma puan durumları', 'memur emeklisine seyyanen zam', 'foça belediye başkanı', 'faiz kararı']
 2026-09-11 06:00:28,171 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-11 10:01:09,877 - INFO - 5 trend seçildi: ['fenerbahçe - as roma puan durumları', 'ismail kartal', 'memur emeklisine seyyanen zam', 'sosyal konut', 'sevdiğim sensin']
+2026-09-11 10:01:10,674 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
