@@ -1589,3 +1589,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-12 10:01:34,027 - INFO - 5 trend seçildi: ['beşiktaş - erzurumspor', 'nebi yavuz', 'ali babacan', 'mady sissoko', 'adem küçükkartal']
 2026-09-12 10:01:34,579 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-12 15:01:22,367 - INFO - 5 trend seçildi: ['beşiktaş - erzurumspor', 'samsunspor - çorum', 'chelsea - hull city', 'nebi yavuz', 'eyüpspor - rizespor']
+2026-09-12 15:01:22,899 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
