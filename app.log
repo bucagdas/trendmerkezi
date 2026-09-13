@@ -1598,3 +1598,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-13 06:01:20,411 - INFO - 5 trend seçildi: ['real madrid - rayo vallecano', 'konyaspor - trabzonspor', 'samsunspor - çorum fk puan durumları', 'chelsea - hull city', 'fatih tekke']
 2026-09-13 06:01:21,153 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-13 10:01:21,142 - INFO - 5 trend seçildi: ['real madrid - rayo vallecano', 'konyaspor - trabzonspor', 'samsunspor - çorum fk puan durumları', 'chelsea - hull city', 'sunderland - arsenal']
+2026-09-13 10:01:21,931 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
