@@ -1610,3 +1610,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-14 06:01:26,727 - INFO - 5 trend seçildi: ['galatasaray - kocaelispor', 'amed - başakşehir', 'uyarı', 'bursaspor - erokspor', 'manchester united - manchester city']
 2026-09-14 06:01:27,209 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-14 10:01:34,839 - INFO - 5 trend seçildi: ['galatasaray - kocaelispor puan durumları', 'amed - başakşehir', 'uyarı', 'sigorta', 'futbol']
+2026-09-14 10:01:35,296 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
