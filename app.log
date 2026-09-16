@@ -1637,3 +1637,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-16 10:01:16,811 - INFO - 5 trend seçildi: ['elche - real madrid', 'elche - real madrid puan durumları', 'tuzlu kahve 3 bölüm', 'merkez bankası', 'ipswich - arsenal']
 2026-09-16 10:01:18,396 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-16 15:01:20,974 - INFO - 5 trend seçildi: ['elche - real madrid', 'elche - real madrid puan durumları', 'tuzlu kahve 3 bölüm', 'mehmet şimşek', 'ahmed şara']
+2026-09-16 15:01:21,594 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
