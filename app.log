@@ -1631,3 +1631,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-15 19:01:22,634 - INFO - 5 trend seçildi: ['motorine zam geldi', 'thomas reis', 'apple tv', 'emre tanış', 'liverpool - tottenham']
 2026-09-15 19:01:23,184 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-16 06:01:18,967 - INFO - 5 trend seçildi: ['elche - real madrid', 'elche - real madrid puan durumları', 'tuzlu kahve 3 bölüm', 'ipswich - arsenal', 'liverpool - tottenham']
+2026-09-16 06:01:19,588 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
