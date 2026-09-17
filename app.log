@@ -1652,3 +1652,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-17 15:01:09,847 - INFO - 5 trend seçildi: ['16 eylül', 'barselona - racing', 'türk lirası', 'münir canar', 'kadir inanır mirası']
 2026-09-17 15:01:10,348 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-17 19:01:06,680 - INFO - 5 trend seçildi: ['rüzgâr', 'beşiktaş - marsilya', 'kadir inanır mirası', 'türk lirası', 'münir canar']
+2026-09-17 19:01:08,611 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
