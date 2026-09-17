@@ -1643,3 +1643,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-16 19:01:20,152 - INFO - 5 trend seçildi: ['mehmet şimşek', 'tuzlu kahve 3 bölüm izle', 'ek tercih kılavuzu 2026', 'zehranur aydemir', 'borsa istanbul']
 2026-09-16 19:01:21,759 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-17 06:01:06,914 - INFO - 5 trend seçildi: ['barselona - racing', '16 eylül', 'barcelona', 'ek tercih kılavuzu 2026', 'mehmet şimşek']
+2026-09-17 06:01:07,399 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
