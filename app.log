@@ -1676,3 +1676,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-19 15:01:04,570 - INFO - 3 trend seçildi: ['golden boy oy verme', 'hasan ataman yıldırım', 'galatasaray trabzonspor']
 2026-09-19 15:01:05,038 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-19 19:00:57,955 - INFO - 1 trend seçildi: ['galatasaray']
+2026-09-19 19:00:59,575 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
