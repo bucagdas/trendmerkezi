@@ -1673,3 +1673,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-19 10:01:12,643 - INFO - 5 trend seçildi: ['kızılcık şerbeti', 'golden boy oy verme', 'motorine indirim', 'melih kabasakal', 'trabzon hava durumu']
 2026-09-19 10:01:13,221 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-19 15:01:04,570 - INFO - 3 trend seçildi: ['golden boy oy verme', 'hasan ataman yıldırım', 'galatasaray trabzonspor']
+2026-09-19 15:01:05,038 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
