@@ -1682,3 +1682,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-20 06:01:23,347 - INFO - 4 trend seçildi: ['trabzonspor galatasaray maçı', 'puan durumu süper lig', 'nefes', 'google']
 2026-09-20 06:01:24,869 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-20 10:00:46,562 - INFO - 2 trend seçildi: ['trabzonspor galatasaray maçı', 'superlig puan tablosu']
+2026-09-20 10:00:47,119 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
