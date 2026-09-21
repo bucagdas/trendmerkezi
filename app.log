@@ -1694,3 +1694,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-21 06:00:46,646 - INFO - 4 trend seçildi: ['amedspor beşiktaş', 'inanç keskin', 'adana deprem', 'fenerbahçe eyüpspor']
 2026-09-21 06:00:47,142 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-21 10:00:49,175 - INFO - 3 trend seçildi: ['inanç keskin', 'adana deprem', 'elif eralp']
+2026-09-21 10:00:49,661 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
