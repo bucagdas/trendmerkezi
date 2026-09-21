@@ -1691,3 +1691,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-20 19:01:28,844 - INFO - 3 trend seçildi: ['beşiktaş', 'fenerbahçe eyüpspor', 'süper lig puan durumu']
 2026-09-20 19:01:29,418 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-21 06:00:46,646 - INFO - 4 trend seçildi: ['amedspor beşiktaş', 'inanç keskin', 'adana deprem', 'fenerbahçe eyüpspor']
+2026-09-21 06:00:47,142 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
