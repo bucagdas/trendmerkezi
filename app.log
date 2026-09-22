@@ -1706,3 +1706,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-22 10:00:48,980 - INFO - 2 trend seçildi: ['manisa', 'konyaspor 23 0']
 2026-09-22 10:00:49,455 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-22 15:00:53,224 - INFO - 4 trend seçildi: ['manisa', 'basın açıklaması', 'konyaspor 23 0', 'masterchef türkiye']
+2026-09-22 15:00:53,919 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
