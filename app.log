@@ -1721,3 +1721,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-23 15:01:01,371 - INFO - 5 trend seçildi: ['tuzlu kahve 4. bölüm', 'mazot indirim', 'mansur yavaş', 'tolga kalender', 'kademeli emeklilik']
 2026-09-23 15:01:03,218 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-23 19:01:04,606 - INFO - 5 trend seçildi: ['tuzlu kahve 4. bölüm', 'mazot indirim', 'tolga kalender', 'kademeli emeklilik', 'wilfried singo']
+2026-09-23 19:01:05,215 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
