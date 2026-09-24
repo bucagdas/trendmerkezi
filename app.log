@@ -1733,3 +1733,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-24 15:00:58,451 - INFO - 5 trend seçildi: ['urfa deprem', 'ülke', 'otomobil', 'uğur uçar', 'dilay özdemir']
 2026-09-24 15:00:59,011 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-24 19:01:00,340 - INFO - 5 trend seçildi: ['şanlıurfa', 'portekiz - galler', 'uğur uçar', 'gazze', 'ösym giriş']
+2026-09-24 19:01:02,253 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
