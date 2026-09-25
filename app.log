@@ -1745,3 +1745,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-25 15:00:57,689 - INFO - 5 trend seçildi: ['banka', 'benzin zammı', 'avustralya - brezilya', 'türkiye futbol federasyonu', 'netanyahu erdoğan hakkında ne dedi']
 2026-09-25 15:00:59,805 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-25 19:01:00,310 - INFO - 5 trend seçildi: ['türkiye - fransa', 'banka', 'benzin zammı', 'trt1', 'trt 1']
+2026-09-25 19:01:03,463 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
