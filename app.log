@@ -1748,3 +1748,6 @@ credits depleted | api_messages=['credits depleted'] | body={"detail":"credits d
 2026-09-25 19:01:00,310 - INFO - 5 trend seçildi: ['türkiye - fransa', 'banka', 'benzin zammı', 'trt1', 'trt 1']
 2026-09-25 19:01:03,463 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
 credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
+2026-09-26 06:01:14,367 - INFO - 5 trend seçildi: ['türkiye - fransa', 'banka', 'italya belçika', 'benzin zammı', 'mert hakan yandaş']
+2026-09-26 06:01:14,992 - ERROR - Tweet gönderilemedi (v2 create_tweet): 402 Payment Required
+credits depleted | api_messages=['credits depleted'] | body={"detail":"credits depleted","status":402,"title":"Payment Required","type":"https://api.x.com/2/problems/credits-depleted"}
