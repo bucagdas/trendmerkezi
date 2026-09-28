@@ -7,8 +7,9 @@ on:
         description: 'DRY_RUN: true = tweet atma, sadece logda göster'
         required: false
         default: 'true'
-  # NOT: zamanlama (schedule) canlıya alırken eklenecek — şimdilik kapalı,
-  # ve manuel çalıştırmada DRY_RUN varsayılan açık, yani yanlışlıkla tweet atılmaz.
+  # NOT: zamanlama GitHub'ın kendi schedule'ı yerine harici bir Cloudflare
+  # Worker cron'u ile yapılıyor (bkz. README); manuel çalıştırmada DRY_RUN
+  # varsayılan açık, yani yanlışlıkla tweet atılmaz.
 
 jobs:
   tweet:
@@ -37,7 +38,6 @@ jobs:
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
 
-      # Commit and push changes
       - name: Commit and push changes
         run: |-
           git config --local user.email "action@github.com"

@@ -22,7 +22,6 @@ logging.basicConfig(
     force=True,
 )
 
-# Twitter API anahtarları (ortam değişkenleri)
 consumer_key = os.environ.get('CONSUMER_KEY')
 consumer_secret = os.environ.get('CONSUMER_SECRET')
 access_token = os.environ.get('ACCESS_TOKEN')
@@ -34,7 +33,7 @@ DRY_RUN = os.environ.get('DRY_RUN', '').strip().lower() in ('1', 'true', 'yes')
 
 
 def get_twitter_clients():
-    """Tweepy v1 (medya) + v2 (tweet) istemcileri — yalnızca gerçek gönderimde."""
+    """Tweepy v1 (medya) + v2 (tweet) istemcileri; yalnızca gerçek gönderimde kullanılır."""
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True)
@@ -132,7 +131,7 @@ def build_tweet_text(trends, comments_file_path, hashtags_file_path, limit=TWEET
     hashtag sayısı azaltılır (3->0), yetmezse daha kısa bir yorum seçilir."""
     trends_block = "\n".join(f"{i + 1}- {t}" for i, t in enumerate(trends))
 
-    comments = load_hashtags(comments_file_path)   # satırları yükler
+    comments = load_hashtags(comments_file_path)
     hashtags_list = load_hashtags(hashtags_file_path)
     tags3 = random.sample(hashtags_list, min(3, len(hashtags_list))) if hashtags_list else []
     comment = random.choice(comments) if comments else ""
@@ -178,7 +177,7 @@ def tweet(text, image_path):
         print("=== DRY_RUN: gönderilecek tweet (canlıya ATILMADI) ===")
         print(text)
         print(f"[medya: {image_path}]")
-        logging.info("DRY_RUN aktif — tweet atılmadı.")
+        logging.info("DRY_RUN aktif, tweet atılmadı.")
         return
     try:
         api, client = get_twitter_clients()
@@ -186,7 +185,7 @@ def tweet(text, image_path):
         logging.error(f"Twitter istemcisi kurulamadı: {e}")
         return
 
-    # Medya (v1.1 media_upload) — başarısız olursa (ör. API katmanı v1.1'i
+    # Medya (v1.1 media_upload) başarısız olursa (ör. API katmanı v1.1'i
     # desteklemiyorsa) metin-olarak devam et, böylece gönderi büsbütün düşmesin.
     media_ids = None
     if image_path:
