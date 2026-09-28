@@ -1,0 +1,7 @@
+# Log dosyaları
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
